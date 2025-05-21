@@ -1,4 +1,1 @@
 flask
-# langchain
-# langchain-community
-# llama-cpp-python
