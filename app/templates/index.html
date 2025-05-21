@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+    <title>StoryCrafter</title>
+</head>
+<body>
+    <h1>Create a Story</h1>
+    <form method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name"><br><br>
+        <label for="hobbies">Hobbies:</label>
+        <input type="text" name="hobbies"><br><br>
+        <input type="submit" value="Generate Story">
+    </form>
+
+    {% if story %}
+    <h2>Your Story:</h2>
+    <p>{{ story }}</p>
+    {% endif %}
+</body>
+</html>
