@@ -1,0 +1,30 @@
+name: Deploy to OpenShift
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v3
+
+      - name: Set up oc CLI
+        uses: redhat-actions/oc-installer@v1
+
+      - name: Login to OpenShift
+        env:
+          KUBECONFIG: ${{ secrets.KUBECONFIG }}
+        run: |
+          mkdir -p $HOME/.kube
+          echo "$KUBECONFIG" > $HOME/.kube/config
+
+      - name: Apply OpenShift Manifests
+        run: |
+          oc project rh-ee-hacohen-dev
+          oc apply -f deployment.yaml
+
+      - name: Restart deployment to trigger rollout
+        run: |
+          oc rollout restart deployment/story-app
