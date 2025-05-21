@@ -23,7 +23,7 @@ jobs:
       - name: Apply OpenShift Manifests
         run: |
           oc project rh-ee-hacohen-dev
-          oc apply -f deployment.yaml
+          oc apply -f app/manifest/deployment.yaml
 
       - name: Restart deployment to trigger rollout
         run: |
