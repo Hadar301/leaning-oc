@@ -4,8 +4,8 @@ This repo is about learning the basics of how to deploy and app from scratch
 Steps:
 1. Build a simple app and test it locally.
 2. Containerize it (using podman) and see that the container is also running properly.
-3. Push it to quay[quay.io]
-4. Create a deployment in the sandbox[https://console.redhat.com/openshift/sandbox] environment for RH developers. 
+3. Push it to [quay](quay.io)
+4. Create a deployment in the [sandbox](https://console.redhat.com/openshift/sandbox) environment for RH developers. 
 5. Create CI/CD for github and see that:
     1. The build and push actually creates a new tag in quay.
     2. You are able to deploy new versions of the app in OC.
