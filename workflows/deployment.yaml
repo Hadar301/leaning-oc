@@ -1,0 +1,26 @@
+name: Deploy to OpenShift
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install OC CLI
+        run: |
+          curl -LO https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz
+          tar -xzf oc.tar.gz
+          sudo mv oc /usr/local/bin/
+
+      - name: Login to OpenShift
+        run: |
+          oc login --token=${{ secrets.OCP_TOKEN }} --server=${{ secrets.OCP_SERVER }}
+
+      - name: Set project
+        run: |
+          oc project rh-ee-hacohen-dev
+
+      - name: Rollout deployment
+        run: |
+          oc rollout restart deployment/story-app
