@@ -16,7 +16,7 @@ def index():
         request_counter["counter"] += 1
         count = request_counter["counter"]
 
-    if count == 100:
+    if count == 5:
         os._exit(1)
     
     if request.method == "POST":
