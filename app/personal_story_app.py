@@ -15,8 +15,9 @@ def index():
         request_counter["counter"] += 1
         count = request_counter["counter"]
 
-    if count == 100:
+    if count == 200:
         abort(500)
+        exit(1)
 
     if request.method == "POST":
         name = request.form["name"]
