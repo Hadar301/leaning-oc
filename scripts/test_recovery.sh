@@ -2,7 +2,7 @@
 
 echo "Test Starting..."
 
-URL=""
+URL="https://story-app-rh-ee-hacohen-dev.apps.rm2.thpm.p1.openshiftapps.com/"
 
 for i in {1..101}
 do
