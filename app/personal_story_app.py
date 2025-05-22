@@ -1,5 +1,6 @@
-from flask import Flask, request, render_template, abort
+from flask import Flask, request, render_template
 import threading
+import os
 
 app = Flask(__name__)
 
@@ -15,10 +16,9 @@ def index():
         request_counter["counter"] += 1
         count = request_counter["counter"]
 
-    if count == 200:
-        abort(500)
-        exit(1)
-
+    if count == 100:
+        os._exit(1)
+    
     if request.method == "POST":
         name = request.form["name"]
         hobbies = request.form["hobbies"]
